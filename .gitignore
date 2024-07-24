@@ -1,4 +1,7 @@
 __pycache__/
 
 pyxenoverse/
+build/
+dist/
 *.png
+*.spec

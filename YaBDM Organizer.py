@@ -16,6 +16,9 @@ from yabdm.dlg.find import FindDialog
 from yabdm.dlg.replace import ReplaceDialog
 from pyxenoverse.gui.file_drop_target import FileDropTarget
 
+import yabdm.darkmode as darkmode 
+
+
 VERSION = '0.2.2'
 
 
@@ -93,6 +96,9 @@ class MainWindow(wx.Frame):
         save_button = wx.Button(self, wx.ID_SAVE, "Save")
         save_button.Bind(wx.EVT_BUTTON, self.save_bdm)
 
+        toggle_dark_button = wx.ToggleButton(self, label='Toggle Dark')
+        toggle_dark_button.Bind(wx.EVT_TOGGLEBUTTON, self.on_toggle_dark)
+
         hyperlink = HyperLinkCtrl(self, -1, "What do all these things mean?",
                                   URL="https://docs.google.com/document/d/"
                                       "18gaAbNCeJyTgizz5IvvXzjWcH9K5Q1wvUHTeWnp8M-E/edit#heading=h.tx82dphejin1")
@@ -103,6 +109,8 @@ class MainWindow(wx.Frame):
         button_sizer.Add(open_button)
         button_sizer.AddSpacer(10)
         button_sizer.Add(save_button)
+        button_sizer.AddSpacer(10)
+        button_sizer.Add(toggle_dark_button)
         button_sizer.Add(hyperlink, 0, wx.ALL, 10)
 
         panel_sizer = wx.BoxSizer()
@@ -215,6 +223,10 @@ class MainWindow(wx.Frame):
     def on_replace(self, _):
         if not self.find.IsShown():
             self.replace.Show()
+
+    def on_toggle_dark(self, event):
+        darkmode.darkMode(self, "White")
+        pub.sendMessage('toggle_dark_mode', e="light" if self.GetBackgroundColour() == "White" else "dark")
 
 
 if __name__ == '__main__':

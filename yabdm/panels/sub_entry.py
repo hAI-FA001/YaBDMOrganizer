@@ -116,8 +116,8 @@ class SubEntryPanel(wx.Panel):
                     'Restore Health'], True)
             ])
         self.damage_amount = self.add_num_entry(main_panel, 'Damage Amount')
-        self.damage_special = self.add_num_entry(main_panel, 'Special')
-        self.damage_special2 = self.add_num_entry(main_panel, 'Special 2')
+        self.damage_special = self.add_num_entry(main_panel, 'Damage Special')
+        self.damage_special_2 = self.add_num_entry(main_panel, 'Damage Special 2')
 
         # Sound
         self.sound_type = self.add_single_selection_entry(sound_panel, 'Sound Type', choices={
@@ -158,7 +158,7 @@ class SubEntryPanel(wx.Panel):
 
         # Effect 3
         self.effect_3_eepk_id = self.add_num_entry(effect_panel, 'Effect 3 EEPK Id')
-        self.effect_3_skill_id = self.add_num_entry(effect_panel, 'Effect 3 Skill')
+        self.effect_3_skill_id = self.add_num_entry(effect_panel, 'Effect 3 Skill Id')
         self.effect_3_skill_type = self.add_single_selection_entry(effect_panel, 'Effect 3 Skill Type', choices={
             'Global': 0x0,
             'Dust': 0x1,
@@ -228,9 +228,9 @@ class SubEntryPanel(wx.Panel):
         self.camera_shake_time = self.add_num_entry(camera_panel, 'Camera Shake Time')
         transparent_values = {-1: 'None'}
         transparent_values.update({value: f'{int(value/15.0 * 100)}% Opaque' for value in range(16)})
-        self.user_screen_flash_transparency = self.add_unknown_num_entry(
+        self.user_bpe_id = self.add_unknown_num_entry(
             camera_panel, 'User BPE ID', min=-1, max=9999)
-        self.victim_screen_flash_transparency = self.add_unknown_num_entry(
+        self.opponent_bpe_id = self.add_unknown_num_entry(
             camera_panel, 'Opponent BPE ID', min=-1, max=9999)
 
         # Stamina/Z Vanish
@@ -257,10 +257,10 @@ class SubEntryPanel(wx.Panel):
         self.u_3a = self.add_hex_entry(unknown_panel, 'U_3A')
         self.u_4c = self.add_hex_entry(unknown_panel, 'U_4C')
         self.u_52 = self.add_hex_entry(unknown_panel, 'U_52')
-        self.u_58_1 = self.add_hex_entry(unknown_panel, 'U_58')
-        self.u_58_2 = self.add_hex_entry(unknown_panel, 'U_5A')
-        self.u_58_3 = self.add_hex_entry(unknown_panel, 'U_5C')
-        self.u_60_1 = self.add_hex_entry(unknown_panel, 'U_60')
+        self.u_58 = self.add_hex_entry(unknown_panel, 'U_58')
+        self.u_5a = self.add_hex_entry(unknown_panel, 'U_5A')
+        self.u_5c = self.add_hex_entry(unknown_panel, 'U_5C')
+        self.u_60 = self.add_hex_entry(unknown_panel, 'U_60')
 
 
 
@@ -325,7 +325,7 @@ class SubEntryPanel(wx.Panel):
 
     def load_sub_entry(self, sub_entry):
         for name in sub_entry.__fields__:
-            self[name].SetValue(sub_entry[name])
+            self[name.lower()].SetValue(sub_entry[name])
         self.sub_entry = sub_entry
 
     def save_sub_entry(self, _):
