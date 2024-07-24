@@ -164,7 +164,7 @@ class MainWindow(wx.Frame):
             dlg.Destroy()
             return
         self.main_panel.bdm = new_bdm
-        self.main_panel.bdm.loadComment(path)
+        # self.main_panel.bdm.loadComment(path)
         # Build Tree
         self.main_panel.build_tree()
         self.main_panel.Layout()
@@ -198,7 +198,7 @@ class MainWindow(wx.Frame):
 
             # Save
             self.main_panel.bdm.save(path)
-            self.main_panel.bdm.saveComment(path)
+            # self.main_panel.bdm.saveComment(path)
             self.statusbar.SetStatusText(f"Saved {path}")
             saved = wx.MessageDialog(self, f"Saved to {path} successfully", "BDM Saved")
             saved.ShowModal()
