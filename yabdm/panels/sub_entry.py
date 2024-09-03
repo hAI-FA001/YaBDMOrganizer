@@ -333,7 +333,7 @@ class SubEntryPanel(wx.Panel):
             return
         for name in self.sub_entry.__fields__:
             # SpinCtrlDoubles suck
-            control = self[name]
+            control = self[name.lower()]  # MY CHANGE: use lowercase cuz this entry's attrs are in lower case
             if isinstance(control, wx.SpinCtrlDouble):
                 try:
                     self.sub_entry[name] = float(control.Children[0].GetValue())
