@@ -309,6 +309,8 @@ class SubEntryPanel(wx.Panel):
             kwargs['min'] = -3.4028235e38
         if 'max' not in kwargs:
             kwargs['max'] = 3.4028235e38
+        
+        kwargs['inc'] = 0.01
         return wx.SpinCtrlDouble(panel, *args, **kwargs)
 
     @add_entry
