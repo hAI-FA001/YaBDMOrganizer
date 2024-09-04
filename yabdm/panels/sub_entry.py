@@ -135,7 +135,7 @@ class SubEntryPanel(wx.Panel):
         self.effect_1_skill_id = self.add_num_entry(effect_panel, 'Effect 1 Skill Id')
         self.effect_1_skill_type = self.add_single_selection_entry(effect_panel, 'Effect 1 Skill Type', choices={
             'Global': 0x0,
-            'Dust': 0x1,
+            'StageBG': 0x1,
             'Player': 0x2,
             'Super': 0x5,
             'Ultimate': 0x6,
@@ -148,7 +148,7 @@ class SubEntryPanel(wx.Panel):
         self.effect_2_skill_id = self.add_num_entry(effect_panel, 'Effect 2 Skill Id')
         self.effect_2_skill_type = self.add_single_selection_entry(effect_panel, 'Effect 2 Skill Type', choices={
             'Global': 0x0,
-            'Dust': 0x1,
+            'StageBG': 0x1,
             'Player': 0x2,
             'Super': 0x5,
             'Ultimate': 0x6,
@@ -161,7 +161,7 @@ class SubEntryPanel(wx.Panel):
         self.effect_3_skill_id = self.add_num_entry(effect_panel, 'Effect 3 Skill Id')
         self.effect_3_skill_type = self.add_single_selection_entry(effect_panel, 'Effect 3 Skill Type', choices={
             'Global': 0x0,
-            'Dust': 0x1,
+            'StageBG': 0x1,
             'Player': 0x2,
             'Super': 0x5,
             'Ultimate': 0x6,
