@@ -10,6 +10,9 @@ from pyxenoverse.gui.ctrl.single_selection_box import SingleSelectionBox
 from pyxenoverse.gui.ctrl.single_selection_info_box import SingleSelectionInfoBox
 from pyxenoverse.gui.ctrl.unknown_hex_ctrl import UnknownHexCtrl
 
+from yabdm.my_helpers import convert_to_px
+
+
 pattern = re.compile(r'([ \n/_])([a-z0-9]+)')
 
 
@@ -31,11 +34,11 @@ class FindDialog(wx.Dialog):
         # Setup Selections
         self.entry.SetSelection(0)
 
-        self.find_ctrl = wx.TextCtrl(self, -1, '', size=(150, -1), style=wx.TE_PROCESS_ENTER)
+        self.find_ctrl = wx.TextCtrl(self, -1, '', size=(convert_to_px(150), -1), style=wx.TE_PROCESS_ENTER)
         self.find_ctrl.Bind(wx.EVT_TEXT_ENTER, self.on_find)
         self.find_ctrl.SetFocus()
 
-        self.grid_sizer = wx.FlexGridSizer(rows=3, cols=2, hgap=10, vgap=10)
+        self.grid_sizer = wx.FlexGridSizer(rows=3, cols=2, hgap=convert_to_px(10), vgap=convert_to_px(10, False))
         self.grid_sizer.Add(wx.StaticText(self, -1, 'Entry: '))
         self.grid_sizer.Add(self.entry, 0, wx.EXPAND)
         self.grid_sizer.Add(wx.StaticText(self, -1, 'Find: '))

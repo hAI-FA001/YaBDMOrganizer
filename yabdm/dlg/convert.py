@@ -1,4 +1,5 @@
 import wx
+from yabdm.my_helpers import convert_to_px
 
 
 class ConvertDialog(wx.Dialog):
@@ -10,7 +11,7 @@ class ConvertDialog(wx.Dialog):
         hsizer = wx.BoxSizer(wx.HORIZONTAL)
         hsizer.Add(wx.StaticText(self, -1, 'Skill Id'), 0, wx.ALL, 10)
 
-        self.skill_id = wx.Choice(self, -1, size=(100, -1), choices=choices)
+        self.skill_id = wx.Choice(self, -1, size=(convert_to_px(100), -1), choices=choices)
         self.skill_id.Select(0)
         hsizer.Add(self.skill_id, 0, wx.ALL, 10)
 
@@ -19,12 +20,12 @@ class ConvertDialog(wx.Dialog):
         ok_button.SetDefault()
         button_sizer.Add(ok_button)
         cancel_button = wx.Button(self, wx.ID_CANCEL, "Cancel")
-        button_sizer.AddSpacer(10)
+        button_sizer.AddSpacer(convert_to_px(10))
         button_sizer.Add(cancel_button)
 
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(hsizer, 0, wx.EXPAND, 10)
-        sizer.Add(wx.StaticLine(self, size=(300, -1)), 0, wx.EXPAND | wx.ALL, 10)
+        sizer.Add(wx.StaticLine(self, size=(convert_to_px(300), -1)), 0, wx.EXPAND | wx.ALL, 10)
         sizer.Add(button_sizer, 0, wx.ALIGN_CENTER | wx.TOP | wx.BOTTOM, 10)
 
         self.SetSizer(sizer)

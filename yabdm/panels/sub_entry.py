@@ -9,6 +9,8 @@ from pyxenoverse.gui.ctrl.single_selection_info_box import SingleSelectionInfoBo
 from pyxenoverse.gui.ctrl.unknown_hex_ctrl import UnknownHexCtrl
 from pyxenoverse.gui.ctrl.unknown_num_ctrl import UnknownNumCtrl
 
+from yabdm.my_helpers import convert_to_px
+
 MAX_UINT16 = 0xFFFF
 MAX_UINT32 = 0xFFFFFFFF
 
@@ -30,7 +32,7 @@ class Page(ScrolledPanel):
     def __init__(self, parent, *args, **kwargs):
         cols = kwargs.pop('cols', 2)
         ScrolledPanel.__init__(self, parent, *args, **kwargs)
-        self.sizer = wx.FlexGridSizer(rows=65, cols=cols, hgap=5, vgap=5)
+        self.sizer = wx.FlexGridSizer(rows=65, cols=cols, hgap=convert_to_px(5), vgap=convert_to_px(5, False))
         self.SetSizer(self.sizer)
         self.SetupScrolling()
 
