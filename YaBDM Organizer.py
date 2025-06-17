@@ -20,7 +20,7 @@ import yabdm.darkmode as darkmode
 from yabdm.my_helpers import convert_to_px
 
 
-VERSION = '0.2.2'
+VERSION = '0.2.5'
 
 
 class MainWindow(wx.Frame):
