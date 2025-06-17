@@ -1,6 +1,7 @@
 __pycache__/
 
 pyxenoverse/
+pyxenoverse
 build/
 dist/
 *.png
